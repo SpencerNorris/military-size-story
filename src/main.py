@@ -63,7 +63,7 @@ def graph_military_spending_over_time():
 	        )
 	    ),
 	    yaxis=dict(
-	        title='Millions of current US dollars',
+	        title='Millions of 2015 US dollars',
 	        titlefont=dict(
 	            family='Courier New, monospace',
 	            size=26,
@@ -228,7 +228,6 @@ def treemap_military_spending_2015():
 """
 Defined using example at 
 http://stackoverflow.com/questions/24659005/radar-chart-with-multiple-scales-on-multiple-axes .
-Seriously, I took most of the code directly from there, so here's my attribution.
 """
 def military_equipment_radar_chart():
 	#Labels for markings in radar chart
@@ -339,31 +338,33 @@ def nuclear_stockpile_area_of_effect():
 Generate treemap of estimates for different civilian policy agendas
 (universal health care, free education, etc.) vs. our military budget.
 Sources: 
+	Est. Cost of Free Education: https://www.theatlantic.com/business/archive/2014/01/heres-exactly-how-much-the-government-would-have-to-spend-to-make-public-college-tuition-free/282803/
 	DoE Clean Energy R&D: https://energy.gov/fy-2017-department-energy-budget-request-fact-sheet
 	Est. Cost of the Boarder Wall: http://www.reuters.com/article/us-usa-trump-immigration-wall-exclusive-idUSKBN15O2ZN
 	NASA Budget: https://www.nasa.gov/sites/default/files/atoms/files/fy_2017_nasa_agency_fact_sheet.pdf
 	ACA Cost Estimate: http://time.com/money/4271224/obamacare-cost-taxpayers-2016/
 	Foreign Aid Estimate: https://www.washingtonpost.com/news/worldviews/wp/2016/09/26/the-u-s-foreign-aid-budget-visualized/?utm_term=.f7ab9ca36dd5
+
+All dollar amounts have been adjusted to reflect 2017 dollars.
 """
 def civilian_agenda_item_costs():
 	#Data for policies and associated costs;
 	#data is in absolute number of dollars
 	data = [
-		("Discretionary Military Spending FY'15", 596020000000),
-		("Est. Cost of<br>Bernie Sander's Plan<br>for Free Public<br>Education", 75000000000),
-		("Annualized Cost of<br>Affordable<br>Care Act<br>FY'16", 110000000000),
+		("Discretionary Military Spending FY'15", 614400000000),
+		("Est. Cost of<br>Free Education<br> circa 2014", 65130000000),
+		("Annualized Cost of<br>Affordable<br>Care Act<br>FY'16", 112500000000),
 		("DoE<br>Clean<br>Energy<br>R&D<br>FY'17", 12600000000),
 		("US Foreign Aid<br>Allocation<br>FY'17", 50100000000),
 		("Est. Cost of<br>the Boarder<br>Wall", 21600000000),
-		("NASA's<br>FY'16<br>Budget", 19300000000)
+		("NASA's<br>FY'16<br>Budget", 19730000000)
 	]
 
 	for x in range(len(data)):
 		data[x] = (data[x][0] + '<br>${:,}B.'.format(int(data[x][1]/1000000000)), data[x][1])
 
-	#Colors taken from colorbrewer2.org
-	colors = ['rgb(178,24,43)','rgb(239,138,98)','rgb(253,219,199)',
-			  'rgb(247,247,247)','rgb(209,229,240)','rgb(103,169,207)','rgb(33,102,172)']
+	#Most colors taken from colorbrewer2.org
+	colors = ['rgb(153,219,255)','rgb(50, 172, 255)','rgb(180, 255, 114)','rgb(255, 133, 132)','rgb(53, 214, 42)','rgb(168, 124, 191)','rgb(253,191,111)']
 
 
 	#Citations for the different purported costs of agenda items
@@ -399,7 +400,7 @@ def civilian_agenda_item_costs():
 	            x = r['x']+(r['dx']/2),
 	            y = r['y']+(r['dy']/2),
 	            text = data[policy_counter][0],
-	            font=dict(family='Courier New, monospace', size=14, color='#000000'),
+	            font=dict(family='Courier New, monospace', size=15, color='#000000'),
 	            showarrow = False
 	        )
 	    )
