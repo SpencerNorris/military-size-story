@@ -351,7 +351,8 @@ def civilian_agenda_item_costs():
 	#Data for policies and associated costs;
 	#data is in absolute number of dollars
 	data = [
-		("Discretionary Military Spending FY'15", 614400000000),
+		("Discretionary Military Spending FY 2000", 301700000000),
+		("Difference from FY'00 to FY'15", 312700000000),
 		("Est. Cost of<br>Free Education<br> circa 2014", 65130000000),
 		("Annualized Cost of<br>Affordable<br>Care Act<br>FY'16", 112500000000),
 		("DoE<br>Clean<br>Energy<br>R&D<br>FY'17", 12600000000),
@@ -363,12 +364,8 @@ def civilian_agenda_item_costs():
 	for x in range(len(data)):
 		data[x] = (data[x][0] + '<br>${:,}B.'.format(int(data[x][1]/1000000000)), data[x][1])
 
-	#Most colors taken from colorbrewer2.org
-	colors = ['rgb(153,219,255)','rgb(50, 172, 255)','rgb(180, 255, 114)','rgb(255, 133, 132)','rgb(53, 214, 42)','rgb(168, 124, 191)','rgb(253,191,111)']
-
-
-	#Citations for the different purported costs of agenda items
-	citations = []
+	#colors taken from colorbrewer2.org
+	colors = ['rgb(213,62,79)','rgb(252,141,89)','rgb(254,224,139)','rgb(255,255,191)','rgb(230,245,152)','rgb(153,213,148)','rgb(50,136,189)']
 
 	#Squarify data
 	x = 0
@@ -381,7 +378,7 @@ def civilian_agenda_item_costs():
 	#Generate treemap (taken directly from https://plot.ly/python/treemaps/)
 	shapes = []
 	annotations = []
-	color_counter = 5
+	color_counter = 6
 	policy_counter = 0
 	for r in rects:
 	    shapes.append( 
